@@ -31,7 +31,7 @@
     min-height:100vh;
     padding:28px 16px 64px;
   }
-  .wrap{max-width:820px;margin:0 auto;}
+  .wrap{max-width:960px;margin:0 auto;}
 
   .topbar{
     display:flex;
@@ -62,44 +62,70 @@
     text-transform:uppercase;
   }
   h1 .hl{color:var(--c1-b);}
-  .sub{color:var(--ink-soft);font-size:15px;max-width:56ch;margin:0 0 28px;font-weight:500;}
+  .sub{color:var(--ink-soft);font-size:15px;max-width:60ch;margin:0 0 30px;font-weight:500;}
 
-  .section-title{
+  .block{
+    margin-bottom:46px;
+  }
+  .block-title{
     font-family:'Manrope',sans-serif;
     font-weight:800;
-    font-size:12.5px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin:30px 2px 12px;
+    font-size:24px;
+    letter-spacing:-0.01em;
+    margin:0 0 4px;
+    padding-bottom:12px;
+    border-bottom:2px solid rgba(19,33,59,0.14);
   }
-  .section-title:first-of-type{margin-top:0;}
+
+  .subgroup{ margin-bottom:26px; margin-top:24px; }
+  .subgroup:first-of-type{ margin-top:22px; }
+  .subgroup-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:14px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--c1-b);
+    margin:0 0 14px 2px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:5px 14px 5px 12px;
+    border-radius:999px;
+    background: rgba(51,85,238,0.10);
+  }
+  .subgroup-title::before{
+    content:'';
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--c1-b);
+  }
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
-    gap:12px;
+    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+    gap:14px;
   }
 
   .card{
     background:var(--card);
     border-radius:22px;
-    padding:20px 20px 18px;
-    box-shadow: 0 16px 34px -24px rgba(19,33,59,0.35);
+    padding:22px 22px 20px;
+    box-shadow: 0 14px 30px -24px rgba(19,33,59,0.35);
     text-decoration:none;
     color:var(--ink);
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
     position:relative;
     transition:transform .15s ease, box-shadow .15s ease;
   }
   .card.ready:hover{
     transform:translateY(-3px);
-    box-shadow: 0 20px 38px -20px rgba(19,33,59,0.4);
+    box-shadow: 0 18px 34px -18px rgba(19,33,59,0.4);
   }
   .card.soon{
-    opacity:.55;
+    opacity:.5;
     cursor:default;
     pointer-events:none;
   }
@@ -108,11 +134,11 @@
     display:flex;
     align-items:flex-start;
     justify-content:space-between;
-    gap:10px;
+    gap:8px;
   }
 
   .tile{
-    width:38px;height:38px;min-width:38px;
+    width:40px;height:40px;min-width:40px;
     border-radius:12px;
     display:flex;align-items:center;justify-content:center;
     font-family:'Manrope',sans-serif;
@@ -142,8 +168,8 @@
   .card-title{
     font-family:'Manrope',sans-serif;
     font-weight:700;
-    font-size:16px;
-    line-height:1.3;
+    font-size:16.5px;
+    line-height:1.32;
     margin:0;
   }
   .card-sub{
@@ -172,88 +198,403 @@
   <h1>Усі <span class="hl">тренажери</span></h1>
   <p class="sub">Ця сторінка — лише для вас. Відкрийте потрібну тему, скопіюйте посилання на неї з адресного рядка і надішліть учню саме його — він побачить тільки цей тест.</p>
 
-  <div class="section-title">Фонетика та орфографія</div>
-  <div class="grid">
-    <a class="card ready" href="fonetyka.html">
-      <div class="card-top"><span class="tile">Ф</span><span class="status ready">Готово</span></div>
-      <p class="card-title">Фонетика</p>
-      <p class="card-sub">Звуки і букви · 36 завдань</p>
-    </a>
-
-    <a class="card soon" href="sproshchennya.html">
-      <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Спрощення в групах приголосних</p>
-      <p class="card-sub">—</p>
-    </a>
-
-    <a class="card soon" href="myakyj-znak.html">
-      <div class="card-top"><span class="tile">М</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">М'який знак</p>
-      <p class="card-sub">—</p>
-    </a>
-
-    <a class="card soon" href="apostrof.html">
-      <div class="card-top"><span class="tile">А</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Апостроф</p>
-      <p class="card-sub">—</p>
-    </a>
-
-    <a class="card soon" href="podvoiennya.html">
-      <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Подвоєння букв</p>
-      <p class="card-sub">—</p>
-    </a>
-
-    <a class="card soon" href="prefiksy.html">
-      <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Правопис префіксів</p>
-      <p class="card-sub">—</p>
-    </a>
-
-    <a class="card soon" href="velyka-bukva.html">
-      <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Велика буква й лапки у власних назвах</p>
-      <p class="card-sub">—</p>
-    </a>
+  <!-- ФОНЕТИКА -->
+  <div class="block">
+    <h2 class="block-title">Фонетика</h2>
+    <div class="grid">
+      <a class="card ready" href="fonetyka.html">
+        <div class="card-top"><span class="tile">Ф</span><span class="status ready">Готово</span></div>
+        <p class="card-title">Фонетика</p>
+        <p class="card-sub">Звуки і букви · 36 завдань</p>
+      </a>
+    </div>
   </div>
 
-  <div class="section-title">Іменник</div>
-  <div class="grid">
-    <a class="card soon" href="imennyk-rid.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Рід</p>
-      <p class="card-sub">—</p>
-    </a>
-    <a class="card soon" href="imennyk-chyslo.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Число</p>
-      <p class="card-sub">—</p>
-    </a>
-    <a class="card soon" href="imennyk-hrupy.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Групи</p>
-      <p class="card-sub">—</p>
-    </a>
-    <a class="card soon" href="imennyk-vidminy.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Відміни</p>
-      <p class="card-sub">—</p>
-    </a>
-    <a class="card soon" href="imennyk-rodovyi.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Родовий відмінок</p>
-      <p class="card-sub">—</p>
-    </a>
-    <a class="card ready" href="klychnyj-vidminok.html">
-      <div class="card-top"><span class="tile">І</span><span class="status ready">Готово</span></div>
-      <p class="card-title">Кличний відмінок</p>
-      <p class="card-sub">40 завдань</p>
-    </a>
-    <a class="card soon" href="imennyk-po-batkovi.html">
-      <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
-      <p class="card-title">Імена по батькові</p>
-      <p class="card-sub">—</p>
-    </a>
+  <!-- ОРФОГРАФІЯ -->
+  <div class="block">
+    <h2 class="block-title">Орфографія</h2>
+
+    <div class="subgroup">
+      <div class="grid">
+        <a class="card soon" href="sproshchennya.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Спрощення в групах приголосних</p>
+        </a>
+        <a class="card soon" href="myakyj-znak.html">
+          <div class="card-top"><span class="tile">М</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">М'який знак</p>
+        </a>
+        <a class="card soon" href="apostrof.html">
+          <div class="card-top"><span class="tile">А</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Апостроф</p>
+        </a>
+        <a class="card soon" href="podvoiennya.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Подвоєння букв</p>
+        </a>
+        <a class="card soon" href="prefiksy.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Правопис префіксів</p>
+        </a>
+        <a class="card soon" href="velyka-bukva.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Велика буква й лапки у власних назвах</p>
+        </a>
+        <a class="card soon" href="ne-z-chastynamy-movy.html">
+          <div class="card-top"><span class="tile">Н</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Правопис НЕ з різними частинами мови</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Написання іншомовних слів</div>
+      <div class="grid">
+        <a class="card soon" href="inshomovni-y-i.html">
+          <div class="card-top"><span class="tile">И</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Букви и, і</p>
+        </a>
+        <a class="card soon" href="inshomovni-podvoiennya.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Подвоєні букви</p>
+        </a>
+        <a class="card soon" href="inshomovni-myakyj-znak.html">
+          <div class="card-top"><span class="tile">М</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">М'який знак</p>
+        </a>
+        <a class="card soon" href="inshomovni-apostrof.html">
+          <div class="card-top"><span class="tile">А</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Апостроф</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Складні слова</div>
+      <div class="grid">
+        <a class="card soon" href="skladni-imennyky.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Складні іменники</p>
+        </a>
+        <a class="card soon" href="skladni-prykmetnyky.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Складні прикметники</p>
+        </a>
+        <a class="card soon" href="skladni-prysliv.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Складний прислівник</p>
+        </a>
+        <a class="card soon" href="skladni-zagalnyi.html">
+          <div class="card-top"><span class="tile">З</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Загальний тест</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЛЕКСИКОЛОГІЯ -->
+  <div class="block">
+    <h2 class="block-title">Лексикологія</h2>
+    <div class="grid">
+      <a class="card soon" href="leksychni-pomylky.html">
+        <div class="card-top"><span class="tile">Л</span><span class="status soon">Скоро</span></div>
+        <p class="card-title">Лексичні помилки</p>
+      </a>
+      <a class="card soon" href="frazeologiya.html">
+        <div class="card-top"><span class="tile">Ф</span><span class="status soon">Скоро</span></div>
+        <p class="card-title">Фразеологія</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- МОРФОЛОГІЯ -->
+  <div class="block">
+    <h2 class="block-title">Морфологія</h2>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Іменник</div>
+      <div class="grid">
+        <a class="card soon" href="imennyk-rid.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Рід</p>
+        </a>
+        <a class="card soon" href="imennyk-chyslo.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Число</p>
+        </a>
+        <a class="card soon" href="imennyk-hrupy.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Групи</p>
+        </a>
+        <a class="card soon" href="imennyk-vidminy.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Відміни</p>
+        </a>
+        <a class="card soon" href="imennyk-rodovyi.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Родовий відмінок</p>
+        </a>
+        <a class="card ready" href="klychnyj-vidminok.html">
+          <div class="card-top"><span class="tile">І</span><span class="status ready">Готово</span></div>
+          <p class="card-title">Кличний відмінок</p>
+          <p class="card-sub">40 завдань</p>
+        </a>
+        <a class="card soon" href="imennyk-po-batkovi.html">
+          <div class="card-top"><span class="tile">І</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Імена по батькові</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Прикметник</div>
+      <div class="grid">
+        <a class="card soon" href="prykmetnyk-stupeni.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Ступені порівняння</p>
+        </a>
+        <a class="card soon" href="prykmetnyk-sufiksy.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Правопис прикметникових суфіксів</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Числівник</div>
+      <div class="grid">
+        <a class="card soon" href="chyslivnyk-vidminy.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Відмінювання числівників</p>
+        </a>
+        <a class="card soon" href="chyslivnyk-uzgodzhennya.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Узгодження числівника з іменником</p>
+        </a>
+        <a class="card soon" href="chyslivnyk-chas.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Позначення часу</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Займенник</div>
+      <div class="grid">
+        <a class="card soon" href="zaimennyk.html">
+          <div class="card-top"><span class="tile">З</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Займенник</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Дієслово</div>
+      <div class="grid">
+        <a class="card soon" href="diyeslovo-formy.html">
+          <div class="card-top"><span class="tile">Д</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Форми дієслова</p>
+        </a>
+        <a class="card soon" href="diyeslovo-diyevidminy.html">
+          <div class="card-top"><span class="tile">Д</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Дієвідміни</p>
+        </a>
+        <a class="card soon" href="diyeslovo-sposoby.html">
+          <div class="card-top"><span class="tile">Д</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Способи</p>
+        </a>
+        <a class="card soon" href="diyeprykmetnyk.html">
+          <div class="card-top"><span class="tile">Д</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Дієприкметник</p>
+        </a>
+        <a class="card soon" href="diyeprysliv.html">
+          <div class="card-top"><span class="tile">Д</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Дієприслівник</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Прислівник</div>
+      <div class="grid">
+        <a class="card soon" href="prysliv.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Прислівник</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Службові частини мови</div>
+      <div class="grid">
+        <a class="card soon" href="pryimennyk.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Прийменник</p>
+        </a>
+        <a class="card soon" href="spoluchnyk.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Сполучник</p>
+        </a>
+        <a class="card soon" href="chastka.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Частка</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Вигук</div>
+      <div class="grid">
+        <a class="card soon" href="vyhuk.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Вигук</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- СИНТАКСИС І ПУНКТУАЦІЯ -->
+  <div class="block">
+    <h2 class="block-title">Синтаксис і пунктуація</h2>
+
+    <div class="subgroup">
+      <div class="grid">
+        <a class="card soon" href="slovospoluchennya.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Словосполучення</p>
+        </a>
+        <a class="card soon" href="vydy-rechennya.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Види речення</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Члени речення</div>
+      <div class="grid">
+        <a class="card soon" href="chleny-holovni.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Головні члени</p>
+        </a>
+        <a class="card soon" href="chleny-druhoryadni.html">
+          <div class="card-top"><span class="tile">Ч</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Другорядні члени</p>
+        </a>
+        <a class="card soon" href="chleny-zagalnyi.html">
+          <div class="card-top"><span class="tile">З</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Загальний тест</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="grid">
+        <a class="card soon" href="tyre-pidmet-prysudok.html">
+          <div class="card-top"><span class="tile">Т</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Тире між підметом і присудком</p>
+        </a>
+        <a class="card soon" href="odnoskladni.html">
+          <div class="card-top"><span class="tile">Т</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Типи односкладних речень</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Однорідні члени речення</div>
+      <div class="grid">
+        <a class="card soon" href="odnoridni.html">
+          <div class="card-top"><span class="tile">О</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Однорідні члени</p>
+        </a>
+        <a class="card soon" href="odnoridni-neodnoridni.html">
+          <div class="card-top"><span class="tile">О</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Однорідні й неоднорідні означення</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="grid">
+        <a class="card soon" href="vstavni.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Вставні слова, словосполучення та речення</p>
+        </a>
+        <a class="card soon" href="zvertannya.html">
+          <div class="card-top"><span class="tile">З</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Звертання</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Відокремлені другорядні члени речення</div>
+      <div class="grid">
+        <a class="card soon" href="vidokremleni-oznachennya.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Означення</p>
+        </a>
+        <a class="card soon" href="vidokremleni-prykladka.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Прикладка</p>
+        </a>
+        <a class="card soon" href="vidokremleni-obstavyna.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Обставина</p>
+        </a>
+        <a class="card soon" href="vidokremleni-dodatok.html">
+          <div class="card-top"><span class="tile">В</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Додаток</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="subgroup-title">Складне речення</div>
+      <div class="grid">
+        <a class="card soon" href="skladne-suryadni.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Сурядні</p>
+        </a>
+        <a class="card soon" href="skladne-pidryadni.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Підрядні</p>
+        </a>
+        <a class="card soon" href="skladne-bezspoluchnykovi.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Безсполучникові</p>
+        </a>
+        <a class="card soon" href="skladne-rizni-zvyazky.html">
+          <div class="card-top"><span class="tile">С</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">З різними видами зв'язку</p>
+        </a>
+        <a class="card soon" href="skladne-zagalnyi.html">
+          <div class="card-top"><span class="tile">З</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Загальний тест</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <div class="grid">
+        <a class="card soon" href="pryama-mova.html">
+          <div class="card-top"><span class="tile">П</span><span class="status soon">Скоро</span></div>
+          <p class="card-title">Пряма мова</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ТЕКСТИ -->
+  <div class="block">
+    <h2 class="block-title">Тексти</h2>
+    <div class="grid">
+      <a class="card soon" href="teksty.html">
+        <div class="card-top"><span class="tile">Т</span><span class="status soon">Скоро</span></div>
+        <p class="card-title">Тексти</p>
+      </a>
+    </div>
   </div>
 
   <footer>@movoznavka</footer>
