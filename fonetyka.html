@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Фонетика · Тренажер</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,13 +25,19 @@
     --wrong-ink:#D8393E;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{
+    margin:0;padding:0;
+    overscroll-behavior:none;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
   body{
     background:var(--bg);
     color:var(--ink);
     font-family:'Inter', sans-serif;
     min-height:100vh;
     padding:28px 16px 64px;
+    touch-action:pan-y;
   }
   .wrap{max-width:720px;margin:0 auto;}
 
@@ -313,6 +319,8 @@
     z-index:9998;
     touch-action:none;
     pointer-events:none;
+    -webkit-user-select:none;
+    user-select:none;
   }
   #drawCanvas.active{
     pointer-events:auto;
@@ -784,6 +792,12 @@ init();
 // МАЛЮВАННЯ ПОВЕРХ ЕКРАНА (режим "учитель")
 // Дозволяє малювати Apple Pencil / пальцем прямо на екрані, не заважаючи
 // звичайній роботі тренажера, коли режим малювання вимкнено.
+//
+// ВИПРАВЛЕННЯ: сторінка більше не масштабується жестом "щипок" (див.
+// meta viewport вище: user-scalable=no). Це прибирає розсинхронізацію
+// між координатами дотику стилуса і фактичним положенням canvas, яка
+// виникала після зуму — саме через неї малювання "стрибало" або замість
+// лінії рухався весь екран.
 // ======================================================================
 (function(){
   const canvas = document.getElementById('drawCanvas');
@@ -818,7 +832,9 @@ init();
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
-    ctx.drawImage(prev, 0, 0, prev.width / devicePixelRatio, prev.height / devicePixelRatio);
+    if(prev.width && prev.height){
+      ctx.drawImage(prev, 0, 0, prev.width / devicePixelRatio, prev.height / devicePixelRatio);
+    }
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
@@ -833,6 +849,9 @@ init();
     toolbar.classList.toggle('show', on);
     toggleBtn.classList.toggle('on', on);
     toggleBtn.title = on ? 'Вимкнути малювання' : 'Малювати';
+    // поки малюємо — забороняємо будь-яке панорамування/скрол сторінки,
+    // щоб дотик стилуса гарантовано йшов у canvas, а не в прокрутку
+    document.body.style.touchAction = on ? 'none' : 'pan-y';
   }
 
   toggleBtn.addEventListener('click', ()=> setActive(!drawingActive));
@@ -871,14 +890,16 @@ init();
 
   canvas.addEventListener('pointerdown', (e)=>{
     if(!drawingActive) return;
+    e.preventDefault();
     isDrawing = true;
     const p = pointerPos(e);
     lastX = p.x; lastY = p.y;
     canvas.setPointerCapture(e.pointerId);
-  });
+  }, {passive:false});
 
   canvas.addEventListener('pointermove', (e)=>{
     if(!drawingActive || !isDrawing) return;
+    e.preventDefault();
     const p = pointerPos(e);
     ctx.globalCompositeOperation = eraserMode ? 'destination-out' : 'source-over';
     ctx.strokeStyle = currentColor;
@@ -889,14 +910,21 @@ init();
     ctx.lineTo(p.x, p.y);
     ctx.stroke();
     lastX = p.x; lastY = p.y;
-  });
+  }, {passive:false});
 
   function stopDrawing(e){
+    if(drawingActive) e.preventDefault();
     isDrawing = false;
   }
-  canvas.addEventListener('pointerup', stopDrawing);
-  canvas.addEventListener('pointercancel', stopDrawing);
-  canvas.addEventListener('pointerleave', stopDrawing);
+  canvas.addEventListener('pointerup', stopDrawing, {passive:false});
+  canvas.addEventListener('pointercancel', stopDrawing, {passive:false});
+  canvas.addEventListener('pointerleave', stopDrawing, {passive:false});
+
+  // додаткова підстраховка для iOS: блокуємо нативний touchmove-скрол
+  // безпосередньо на canvas під час малювання
+  canvas.addEventListener('touchmove', (e)=>{
+    if(drawingActive) e.preventDefault();
+  }, {passive:false});
 })();
 </script>
 </body>
